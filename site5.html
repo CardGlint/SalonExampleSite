@@ -1,0 +1,3676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Maison Rosé — Beauty Salon</title>
+
+  <meta
+    name="description"
+    content="Maison Rosé is a modern beauty sanctuary in Dubai offering hair, nails, lashes, brows, facials, waxing and beauty treatments."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: #fffaf9;
+      color: #33282a;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    :root {
+      --pink: #e7a8b8;
+      --pink-dark: #c97d91;
+      --pink-soft: #f9e6ea;
+      --pink-pale: #fff4f5;
+      --cream: #fffaf9;
+      --white: #ffffff;
+      --dark: #33282a;
+      --muted: #806f73;
+      --gold: #b99668;
+      --border: #eadbdd;
+      --shadow: 0 25px 70px rgba(102, 55, 65, 0.12);
+    }
+
+
+    /* =========================================================
+       GLOBAL
+    ========================================================= */
+
+    .container {
+      width: min(1180px, 90%);
+      margin: auto;
+    }
+
+    .section {
+      padding: 120px 0;
+    }
+
+    .eyebrow {
+      color: var(--pink-dark);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 10px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(48px, 6vw, 82px);
+      line-height: .9;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .section-title em {
+      color: var(--pink-dark);
+      font-style: italic;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      max-width: 570px;
+      font-size: 15px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 25px;
+      border-radius: 100px;
+      border: 1px solid transparent;
+      transition: .3s ease;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .btn-dark {
+      background: var(--dark);
+      color: white;
+    }
+
+    .btn-dark:hover {
+      background: var(--pink-dark);
+      transform: translateY(-3px);
+    }
+
+    .btn-pink {
+      background: var(--pink);
+      color: white;
+    }
+
+    .btn-pink:hover {
+      background: var(--pink-dark);
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover {
+      background: var(--pink-soft);
+      border-color: var(--pink);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: .9s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      padding: 22px 0;
+      transition: .35s ease;
+    }
+
+    header.scrolled {
+      background: rgba(255,250,249,.93);
+      backdrop-filter: blur(18px);
+      padding: 13px 0;
+      box-shadow: 0 8px 30px rgba(60,30,35,.07);
+    }
+
+    .nav {
+      width: min(1220px, 92%);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--pink-dark);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      font-size: 12px;
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 1px;
+      background: var(--pink-dark);
+      transition: .3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+
+    /* =========================================================
+       CHAPTER LABEL
+    ========================================================= */
+
+    .chapter {
+      position: relative;
+    }
+
+    .chapter-number {
+      position: absolute;
+      right: 5%;
+      top: 70px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 18px;
+      color: var(--pink-dark);
+      letter-spacing: 2px;
+    }
+
+
+    /* =========================================================
+       HERO 01 — EDITORIAL
+    ========================================================= */
+
+    .hero-one {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 90% 20%, #f8d9e1, transparent 28%),
+        radial-gradient(circle at 5% 85%, #f5e2d9, transparent 28%),
+        var(--cream);
+    }
+
+    .hero-one::before {
+      content: "";
+      position: absolute;
+      width: 540px;
+      height: 540px;
+      border: 1px solid rgba(201,125,145,.15);
+      border-radius: 50%;
+      right: -190px;
+      top: 120px;
+    }
+
+    .hero-one-grid {
+      width: min(1180px,90%);
+      margin: auto;
+      padding-top: 80px;
+      display: grid;
+      grid-template-columns: 1fr .9fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-one h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(75px, 10vw, 140px);
+      line-height: .78;
+      font-weight: 500;
+      letter-spacing: -5px;
+    }
+
+    .hero-one h1 em {
+      color: var(--pink-dark);
+      font-style: italic;
+    }
+
+    .hero-one-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-one-text {
+      max-width: 490px;
+      color: var(--muted);
+      margin: 30px 0;
+    }
+
+    .hero-one-image-wrap {
+      position: relative;
+    }
+
+    .hero-one-image {
+      height: 650px;
+      object-fit: cover;
+      border-radius: 250px 250px 25px 25px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-badge {
+      position: absolute;
+      left: -50px;
+      bottom: 35px;
+      background: rgba(255,255,255,.94);
+      padding: 22px 25px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-badge small {
+      display: block;
+      color: var(--pink-dark);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 9px;
+    }
+
+    .hero-badge strong {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 25px;
+    }
+
+
+    /* =========================================================
+       INTRO 01
+    ========================================================= */
+
+    .intro-one {
+      text-align: center;
+      background: white;
+    }
+
+    .intro-one .subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .intro-line {
+      width: 60px;
+      height: 1px;
+      background: var(--pink);
+      margin: 35px auto 0;
+    }
+
+
+    /* =========================================================
+       SERVICES 01 — CARDS
+    ========================================================= */
+
+    .services-one {
+      background: var(--pink-pale);
+    }
+
+    .services-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 55px;
+      gap: 30px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      background: white;
+      min-height: 300px;
+      padding: 35px;
+      border: 1px solid #f0dfe2;
+      position: relative;
+      transition: .35s ease;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-9px);
+      box-shadow: var(--shadow);
+    }
+
+    .service-card:nth-child(2),
+    .service-card:nth-child(5) {
+      margin-top: 35px;
+    }
+
+    .service-number {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 21px;
+      color: var(--pink-dark);
+    }
+
+    .service-icon {
+      position: absolute;
+      top: 25px;
+      right: 28px;
+      font-size: 25px;
+      color: var(--pink-dark);
+    }
+
+    .service-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 36px;
+      font-weight: 500;
+      margin-top: 55px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+      max-width: 280px;
+    }
+
+    .service-link {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--pink-dark);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+
+    /* =========================================================
+       FEATURE 01
+    ========================================================= */
+
+    .feature-one {
+      background: var(--cream);
+    }
+
+    .feature-one-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      align-items: center;
+      gap: 90px;
+    }
+
+    .feature-image {
+      height: 610px;
+      object-fit: cover;
+      border-radius: 25px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin: 35px 0;
+    }
+
+    .feature-list li {
+      border-bottom: 1px solid var(--border);
+      padding: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .feature-list span {
+      color: var(--pink-dark);
+    }
+
+
+    /* =========================================================
+       TEAM 01
+    ========================================================= */
+
+    .team-one {
+      background: white;
+    }
+
+    .team-heading {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .team-heading .subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 25px;
+    }
+
+    .team-card {
+      text-align: center;
+    }
+
+    .team-photo {
+      height: 410px;
+      object-fit: cover;
+      margin-bottom: 18px;
+      filter: saturate(.85);
+      transition: .4s;
+    }
+
+    .team-card:nth-child(2) {
+      margin-top: 50px;
+    }
+
+    .team-card:hover .team-photo {
+      transform: scale(1.02);
+      filter: saturate(1);
+    }
+
+    .team-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+    .team-card p {
+      color: var(--pink-dark);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       TESTIMONIAL 01
+    ========================================================= */
+
+    .quote-one {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 130px 20px;
+    }
+
+    .quote-symbol {
+      font-family: "Cormorant Garamond", serif;
+      color: var(--pink);
+      font-size: 80px;
+      line-height: .5;
+    }
+
+    .quote-one blockquote {
+      max-width: 900px;
+      margin: 35px auto 25px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(35px,5vw,62px);
+      line-height: 1;
+    }
+
+    .quote-one cite {
+      font-style: normal;
+      color: #e8b9c4;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       CONTACT 01
+    ========================================================= */
+
+    .contact-one {
+      background: var(--pink-pale);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .contact-card {
+      background: white;
+      padding: 50px;
+      border: 1px solid #f0dfe2;
+    }
+
+    .contact-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      font-weight: 500;
+      line-height: .95;
+      margin-bottom: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 23px;
+    }
+
+    .contact-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--pink-soft);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .contact-item small {
+      display: block;
+      color: var(--pink-dark);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 9px;
+    }
+
+    .contact-item p,
+    .contact-item a {
+      font-size: 14px;
+    }
+
+    .map {
+      min-height: 430px;
+      background:
+        linear-gradient(rgba(255,238,242,.78),rgba(255,238,242,.78)),
+        url("https://images.unsplash.com/photo-1524230572899-a752b3835840?auto=format&fit=crop&w=1200&q=80")
+        center/cover;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+    }
+
+    .map-box {
+      background: rgba(255,255,255,.94);
+      padding: 35px;
+      text-align: center;
+      max-width: 330px;
+      box-shadow: var(--shadow);
+    }
+
+    .map-box span {
+      font-size: 28px;
+    }
+
+    .map-box h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 30px;
+      margin: 7px 0;
+    }
+
+    .map-box p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+
+    /* =========================================================
+       CTA 01
+    ========================================================= */
+
+    .cta-one {
+      padding: 120px 20px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 30%,#f5cbd5,transparent 30%),
+        radial-gradient(circle at 80% 70%,#f2d9cc,transparent 30%),
+        var(--pink-pale);
+    }
+
+    .cta-one h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(60px,8vw,100px);
+      line-height: .85;
+      font-weight: 500;
+      max-width: 800px;
+      margin: auto auto 30px;
+    }
+
+    .cta-one p {
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto 30px;
+    }
+
+
+    /* =========================================================
+       CHAPTER 02 — EDITORIAL
+    ========================================================= */
+
+    .chapter-two {
+      background: #f7eee9;
+    }
+
+    .hero-two {
+      padding: 170px 0 120px;
+    }
+
+    .hero-two-grid {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero-two-copy {
+      order: 2;
+    }
+
+    .hero-two-image-wrap {
+      order: 1;
+      position: relative;
+    }
+
+    .hero-two-image {
+      height: 680px;
+      object-fit: cover;
+    }
+
+    .hero-two-small-image {
+      position: absolute;
+      width: 230px;
+      height: 280px;
+      object-fit: cover;
+      right: -55px;
+      bottom: -45px;
+      border: 12px solid #f7eee9;
+    }
+
+    .hero-two h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(65px,8vw,115px);
+      line-height: .78;
+      font-weight: 500;
+    }
+
+    .hero-two h2 em {
+      color: var(--pink-dark);
+    }
+
+
+    /* =========================================================
+       SERVICES 02 — HORIZONTAL
+    ========================================================= */
+
+    .services-two {
+      background: #33282a;
+      color: white;
+    }
+
+    .services-two .section-title {
+      color: white;
+    }
+
+    .services-two .subtitle {
+      color: #cdbdc0;
+    }
+
+    .services-list {
+      margin-top: 65px;
+      border-top: 1px solid rgba(255,255,255,.15);
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr 100px;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,.15);
+      transition: .3s;
+    }
+
+    .service-row:hover {
+      padding-left: 15px;
+      color: var(--pink);
+    }
+
+    .service-row-number {
+      color: var(--pink);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 20px;
+    }
+
+    .service-row h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 35px;
+      font-weight: 500;
+    }
+
+    .service-row p {
+      color: #b8a9ac;
+      font-size: 12px;
+    }
+
+    .service-row-price {
+      text-align: right;
+      color: var(--pink);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 20px;
+    }
+
+
+    /* =========================================================
+       FEATURE 02 — FULL WIDTH
+    ========================================================= */
+
+    .feature-two {
+      background: white;
+    }
+
+    .feature-banner {
+      position: relative;
+      height: 650px;
+      overflow: hidden;
+    }
+
+    .feature-banner img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .feature-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      padding: 70px;
+      background: linear-gradient(90deg,rgba(40,25,28,.7),transparent);
+    }
+
+    .feature-overlay-content {
+      color: white;
+      max-width: 500px;
+    }
+
+    .feature-overlay-content .section-title {
+      color: white;
+    }
+
+    .feature-overlay-content p {
+      color: #eee;
+      margin: 25px 0;
+    }
+
+
+    /* =========================================================
+       TEAM 02 — ASYMMETRIC
+    ========================================================= */
+
+    .team-two {
+      background: var(--cream);
+    }
+
+    .team-two-layout {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .team-intro {
+      position: sticky;
+      top: 120px;
+    }
+
+    .team-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .team-stack-card:nth-child(2) {
+      margin-top: 80px;
+    }
+
+    .team-stack-card img {
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .team-stack-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 30px;
+      margin-top: 12px;
+    }
+
+    .team-stack-card p {
+      color: var(--pink-dark);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       TESTIMONIAL 02
+    ========================================================= */
+
+    .quote-two {
+      background: #e9c0ca;
+      padding: 120px 20px;
+    }
+
+    .quote-two-inner {
+      width: min(1000px,90%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .quote-two-number {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 100px;
+      color: white;
+      line-height: .8;
+    }
+
+    .quote-two blockquote {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(38px,5vw,68px);
+      line-height: .95;
+    }
+
+    .quote-two cite {
+      display: block;
+      margin-top: 30px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 9px;
+      color: #77555e;
+    }
+
+
+    /* =========================================================
+       CONTACT 02
+    ========================================================= */
+
+    .contact-two {
+      background: white;
+    }
+
+    .contact-two-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 25px;
+    }
+
+    .contact-photo {
+      min-height: 560px;
+      background:
+        url("https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1200&q=85")
+        center/cover;
+      position: relative;
+    }
+
+    .contact-photo-box {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      background: white;
+      padding: 30px;
+      max-width: 310px;
+    }
+
+    .contact-photo-box h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 35px;
+      line-height: .95;
+    }
+
+    .contact-photo-box p {
+      color: var(--muted);
+      font-size: 12px;
+      margin: 12px 0 18px;
+    }
+
+    .hours {
+      background: var(--pink-pale);
+      padding: 50px;
+    }
+
+    .hours h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      font-weight: 500;
+      margin-bottom: 25px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding: 13px 0;
+      font-size: 13px;
+    }
+
+    .hours-row span {
+      color: var(--pink-dark);
+    }
+
+
+    /* =========================================================
+       CTA 02
+    ========================================================= */
+
+    .cta-two {
+      background: var(--dark);
+      color: white;
+      padding: 120px 20px;
+      text-align: center;
+    }
+
+    .cta-two h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(60px,9vw,125px);
+      font-weight: 400;
+      line-height: .78;
+    }
+
+    .cta-two h2 em {
+      color: var(--pink);
+    }
+
+    .cta-two p {
+      max-width: 500px;
+      color: #cbbdc0;
+      margin: 30px auto;
+    }
+
+
+    /* =========================================================
+       CHAPTER 03
+    ========================================================= */
+
+    .chapter-three {
+      background: #fff;
+    }
+
+    .hero-three {
+      padding: 160px 0 120px;
+      background: var(--pink-pale);
+    }
+
+    .hero-three-heading {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .hero-three-heading h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(70px,10vw,145px);
+      line-height: .75;
+      font-weight: 500;
+    }
+
+    .hero-three-heading em {
+      color: var(--pink-dark);
+    }
+
+    .hero-three-images {
+      display: grid;
+      grid-template-columns: .7fr 1fr .7fr;
+      gap: 18px;
+      align-items: end;
+    }
+
+    .hero-three-images img {
+      height: 480px;
+      object-fit: cover;
+    }
+
+    .hero-three-images img:nth-child(2) {
+      height: 650px;
+    }
+
+
+    /* =========================================================
+       SERVICES 03 — EDITORIAL
+    ========================================================= */
+
+    .services-three {
+      padding: 130px 0;
+      background: var(--cream);
+    }
+
+    .services-three-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 90px;
+    }
+
+    .services-three-intro {
+      position: sticky;
+      top: 120px;
+      height: fit-content;
+    }
+
+    .editorial-service {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 30px;
+      padding: 35px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .editorial-service img {
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .editorial-service h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
+      font-weight: 500;
+    }
+
+    .editorial-service p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 8px 0 15px;
+    }
+
+    .editorial-service a {
+      color: var(--pink-dark);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 9px;
+      font-weight: 600;
+    }
+
+
+    /* =========================================================
+       FEATURE 03 — SPLIT
+    ========================================================= */
+
+    .feature-three {
+      background: #ead0d5;
+      padding: 130px 0;
+    }
+
+    .feature-three-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 650px;
+    }
+
+    .feature-three-image {
+      overflow: hidden;
+    }
+
+    .feature-three-image img {
+      height: 100%;
+      min-height: 650px;
+      object-fit: cover;
+    }
+
+    .feature-three-copy {
+      background: white;
+      padding: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .feature-three-copy p {
+      color: var(--muted);
+      margin: 25px 0;
+      max-width: 450px;
+    }
+
+
+    /* =========================================================
+       TEAM 03 — LARGE PORTRAITS
+    ========================================================= */
+
+    .team-three {
+      background: #f5eee9;
+    }
+
+    .team-three-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 60px;
+    }
+
+    .team-three-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 20px;
+    }
+
+    .team-large img {
+      height: 650px;
+      object-fit: cover;
+    }
+
+    .team-large h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
+      margin-top: 15px;
+    }
+
+    .team-large p {
+      color: var(--pink-dark);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 9px;
+    }
+
+    .team-small-column {
+      display: grid;
+      gap: 20px;
+    }
+
+    .team-small {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .team-small img {
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .team-small h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 30px;
+    }
+
+    .team-small p {
+      color: var(--pink-dark);
+      text-transform: uppercase;
+      font-size: 8px;
+      letter-spacing: 2px;
+    }
+
+
+    /* =========================================================
+       TESTIMONIAL 03 — CARDS
+    ========================================================= */
+
+    .quote-three {
+      background: white;
+      padding: 130px 0;
+    }
+
+    .quote-three-heading {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .review {
+      background: var(--pink-pale);
+      padding: 40px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .review-stars {
+      color: var(--pink-dark);
+      letter-spacing: 4px;
+    }
+
+    .review p {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 29px;
+      line-height: 1.05;
+      margin: 25px 0;
+    }
+
+    .review small {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      font-size: 8px;
+    }
+
+
+    /* =========================================================
+       CONTACT 03
+    ========================================================= */
+
+    .contact-three {
+      background: var(--dark);
+      color: white;
+      padding: 130px 0;
+    }
+
+    .contact-three-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .contact-three .section-title {
+      color: white;
+    }
+
+    .contact-three .subtitle {
+      color: #cbbdc0;
+    }
+
+    .contact-big-info {
+      margin-top: 35px;
+    }
+
+    .contact-big-info div {
+      margin-bottom: 20px;
+    }
+
+    .contact-big-info small {
+      display: block;
+      color: var(--pink);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 9px;
+    }
+
+    .contact-big-info a,
+    .contact-big-info p {
+      font-size: 15px;
+    }
+
+    .contact-form {
+      background: white;
+      color: var(--dark);
+      padding: 45px;
+    }
+
+    .contact-form h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 40px;
+      font-weight: 500;
+      margin-bottom: 25px;
+    }
+
+    .fake-input {
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      color: #9b898d;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+
+    /* =========================================================
+       CTA 03
+    ========================================================= */
+
+    .cta-three {
+      padding: 140px 20px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 20%,#f5d5dc,transparent 40%),
+        #fff8f7;
+    }
+
+    .cta-three h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(65px,10vw,130px);
+      line-height: .75;
+      font-weight: 500;
+    }
+
+    .cta-three h2 em {
+      color: var(--pink-dark);
+    }
+
+    .cta-three p {
+      max-width: 480px;
+      color: var(--muted);
+      margin: 30px auto;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 60px 0 25px;
+    }
+
+    .footer-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding-bottom: 45px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .footer-logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+    }
+
+    .footer-logo span {
+      color: var(--pink);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 25px;
+      color: #d5c7c9;
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .copyright {
+      text-align: center;
+      color: #9c898d;
+      font-size: 9px;
+      padding-top: 22px;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media(max-width:900px) {
+
+      .section {
+        padding: 85px 0;
+      }
+
+      .nav-links,
+      .nav-actions .btn {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links.mobile-open {
+        position: absolute;
+        top: 72px;
+        left: 5%;
+        width: 90%;
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .hero-one-grid,
+      .hero-two-grid,
+      .feature-one-grid,
+      .team-two-layout,
+      .contact-three-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-one-image-wrap {
+        margin-top: 20px;
+      }
+
+      .hero-one-image {
+        height: 500px;
+      }
+
+      .hero-badge {
+        left: 15px;
+      }
+
+      .services-grid,
+      .team-grid,
+      .reviews {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card:nth-child(2),
+      .service-card:nth-child(5),
+      .team-card:nth-child(2) {
+        margin-top: 0;
+      }
+
+      .feature-image {
+        height: 450px;
+      }
+
+      .contact-grid,
+      .contact-two-grid,
+      .feature-three-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-two-copy {
+        order: 1;
+      }
+
+      .hero-two-image-wrap {
+        order: 2;
+      }
+
+      .hero-two-image {
+        height: 500px;
+      }
+
+      .hero-two-small-image {
+        right: 15px;
+      }
+
+      .service-row {
+        grid-template-columns: 50px 1fr 70px;
+      }
+
+      .service-row p {
+        display: none;
+      }
+
+      .service-row-price {
+        font-size: 16px;
+      }
+
+      .feature-banner {
+        height: 550px;
+      }
+
+      .feature-overlay {
+        padding: 35px;
+      }
+
+      .team-intro {
+        position: static;
+      }
+
+      .team-three-header {
+        display: block;
+      }
+
+      .team-three-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-large img {
+        height: 500px;
+      }
+
+      .contact-form {
+        margin-top: 20px;
+      }
+
+      .footer-main {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+
+    @media(max-width:550px) {
+
+      .hero-one h1 {
+        font-size: 75px;
+      }
+
+      .hero-one-image {
+        height: 430px;
+      }
+
+      .hero-two h2 {
+        font-size: 75px;
+      }
+
+      .hero-three-images {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-three-images img,
+      .hero-three-images img:nth-child(2) {
+        height: 430px;
+      }
+
+      .services-head {
+        display: block;
+      }
+
+      .services-head .btn {
+        margin-top: 25px;
+      }
+
+      .service-row {
+        grid-template-columns: 35px 1fr 55px;
+      }
+
+      .service-row h3 {
+        font-size: 28px;
+      }
+
+      .feature-three-copy {
+        padding: 45px 30px;
+      }
+
+      .feature-three-image img {
+        min-height: 430px;
+      }
+
+      .team-stack {
+        grid-template-columns: 1fr;
+      }
+
+      .team-stack-card:nth-child(2) {
+        margin-top: 0;
+      }
+
+      .team-small {
+        grid-template-columns: 120px 1fr;
+      }
+
+      .team-small img {
+        height: 160px;
+      }
+
+      .contact-card,
+      .hours {
+        padding: 30px;
+      }
+
+      .quote-two-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-two-number {
+        font-size: 60px;
+      }
+
+      .editorial-service {
+        grid-template-columns: 100px 1fr;
+        gap: 18px;
+      }
+
+      .editorial-service img {
+        height: 140px;
+      }
+
+      .editorial-service h3 {
+        font-size: 28px;
+      }
+
+      .hero-three-heading h2 {
+        font-size: 75px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header id="header">
+
+  <nav class="nav">
+
+    <a href="#home" class="logo">
+      Maison <span>Rosé</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#chapter-one">Treatments</a></li>
+      <li><a href="#chapter-two">Experience</a></li>
+      <li><a href="#chapter-three">Our Team</a></li>
+      <li><a href="#contact">Visit</a></li>
+    </ul>
+
+    <div class="nav-actions">
+
+      <a
+        href="https://wa.me/971501234567"
+        target="_blank"
+        class="btn btn-pink"
+      >
+        Book Appointment
+      </a>
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </nav>
+
+</header>
+
+
+<main>
+
+
+<!-- =========================================================
+     CHAPTER ONE
+========================================================= -->
+
+<div class="chapter chapter-one" id="chapter-one">
+
+  <div class="chapter-number">01 / 03</div>
+
+
+  <!-- HERO 01 -->
+
+  <section class="hero-one" id="home">
+
+    <div class="hero-one-grid">
+
+      <div class="hero-one-copy reveal">
+
+        <div class="eyebrow">
+          Beauty · Wellness · You
+        </div>
+
+        <h1>
+          Feel<br>
+          <em>beautiful.</em>
+        </h1>
+
+        <p class="hero-one-text">
+          A modern beauty sanctuary created for slow mornings,
+          beautiful hair, glowing skin and those little moments
+          where you choose yourself.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a
+            href="https://wa.me/971501234567"
+            target="_blank"
+            class="btn btn-dark"
+          >
+            Book via WhatsApp →
+          </a>
+
+          <a
+            href="#services-one"
+            class="btn btn-outline"
+          >
+            Explore Treatments
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-one-image-wrap reveal">
+
+        <img
+          class="hero-one-image"
+          src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TVPfX-cjMAFKiU5oq4V2aUGAUwjLz3lGJzQ2rrlRCWXRbhO1pi8F1ZLFR0Hzr2Z0I8viYbdO_5D-AXgOH12EC_ANK4OLRFFge-FVhBJvOPOZXOCYC3ECfGlOLffd-KBuRIrwP0dtEfVWVs=s1360-w1360-h1020-rw"
+          alt="Maison Rose salon"
+        >
+
+        <div class="hero-badge">
+
+          <small>
+            Welcome to
+          </small>
+
+          <strong>
+            Your beauty ritual.
+          </strong>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- INTRO 01 -->
+
+  <section class="section intro-one">
+
+    <div class="container reveal">
+
+      <div class="eyebrow">
+        The Maison Rosé Experience
+      </div>
+
+      <h2 class="section-title">
+        Beauty, but make it<br>
+        <em>personal.</em>
+      </h2>
+
+      <p class="subtitle">
+        From your first coffee to your final mirror check,
+        every detail is designed to make you feel cared for.
+        Expert beauty treatments meet a calm, feminine
+        atmosphere that feels like your own little escape.
+      </p>
+
+      <div class="intro-line"></div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES 01 -->
+
+  <section
+    class="section services-one"
+    id="services-one"
+  >
+
+    <div class="container">
+
+      <div class="services-head reveal">
+
+        <div>
+
+          <div class="eyebrow">
+            Our Treatments
+          </div>
+
+          <h2 class="section-title">
+            Your beauty<br>
+            <em>ritual.</em>
+          </h2>
+
+          <p class="subtitle">
+            Thoughtfully selected treatments for hair,
+            skin, nails and everything in between.
+          </p>
+
+        </div>
+
+        <a
+          href="https://wa.me/971501234567"
+          target="_blank"
+          class="btn btn-dark"
+        >
+          Ask About Treatments →
+        </a>
+
+      </div>
+
+
+      <div class="services-grid">
+
+        <article class="service-card reveal">
+          <div class="service-number">01</div>
+          <div class="service-icon">✦</div>
+          <h3>Hair</h3>
+          <p>
+            Cuts, blow-dries, styling, colour,
+            highlights and nourishing treatments.
+          </p>
+          <a href="#contact" class="service-link">
+            Discover →
+          </a>
+        </article>
+
+
+        <article class="service-card reveal">
+          <div class="service-number">02</div>
+          <div class="service-icon">♡</div>
+          <h3>Facials</h3>
+          <p>
+            Glowing, hydrating and rejuvenating
+            facials tailored to your skin.
+          </p>
+          <a href="#contact" class="service-link">
+            Discover →
+          </a>
+        </article>
+
+
+        <article class="service-card reveal">
+          <div class="service-number">03</div>
+          <div class="service-icon">✧</div>
+          <h3>Nails</h3>
+          <p>
+            Manicures, gel polish, extensions
+            and detailed nail treatments.
+          </p>
+          <a href="#contact" class="service-link">
+            Discover →
+          </a>
+        </article>
+
+
+        <article class="service-card reveal">
+          <div class="service-number">04</div>
+          <div class="service-icon">❀</div>
+          <h3>Lashes</h3>
+          <p>
+            Classic lashes, volume sets,
+            lash lifts and natural finishes.
+          </p>
+          <a href="#contact" class="service-link">
+            Discover →
+          </a>
+        </article>
+
+
+        <article class="service-card reveal">
+          <div class="service-number">05</div>
+          <div class="service-icon">⌁</div>
+          <h3>Brows</h3>
+          <p>
+            Brow shaping, tinting and precision
+            styling designed for your face.
+          </p>
+          <a href="#contact" class="service-link">
+            Discover →
+          </a>
+        </article>
+
+
+        <article class="service-card reveal">
+          <div class="service-number">06</div>
+          <div class="service-icon">♡</div>
+          <h3>Waxing</h3>
+          <p>
+            Gentle, professional waxing designed
+            with comfort and care in mind.
+          </p>
+          <a href="#contact" class="service-link">
+            Discover →
+          </a>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEATURE 01 -->
+
+  <section class="section feature-one">
+
+    <div class="container feature-one-grid">
+
+      <div class="reveal">
+
+        <img
+          class="feature-image"
+          src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=900&q=85"
+          alt="Beauty treatment"
+        >
+
+      </div>
+
+
+      <div class="reveal">
+
+        <div class="eyebrow">
+          More than a salon
+        </div>
+
+        <h2 class="section-title">
+          Come for the<br>
+          <em>glow.</em>
+        </h2>
+
+        <p class="subtitle">
+          We believe beauty appointments should feel less
+          like another item on your to-do list and more like
+          an hour completely for yourself.
+        </p>
+
+        <ul class="feature-list">
+
+          <li>
+            <span>01</span>
+            Personalised consultations
+          </li>
+
+          <li>
+            <span>02</span>
+            Experienced specialists
+          </li>
+
+          <li>
+            <span>03</span>
+            Premium beauty products
+          </li>
+
+          <li>
+            <span>04</span>
+            Calm, private atmosphere
+          </li>
+
+        </ul>
+
+        <a
+          href="https://wa.me/971501234567"
+          target="_blank"
+          class="btn btn-pink"
+        >
+          Make it a beauty day →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TEAM 01 -->
+
+  <section class="section team-one">
+
+    <div class="container">
+
+      <div class="team-heading reveal">
+
+        <div class="eyebrow">
+          Meet The Team
+        </div>
+
+        <h2 class="section-title">
+          The women behind<br>
+          <em>the magic.</em>
+        </h2>
+
+        <p class="subtitle">
+          Skilled hands, warm personalities and a shared
+          obsession with making you feel your absolute best.
+        </p>
+
+      </div>
+
+
+      <div class="team-grid">
+
+        <article class="team-card reveal">
+
+          <img
+            class="team-photo"
+            src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=85"
+            alt="Sofia"
+          >
+
+          <h3>Sofia</h3>
+          <p>Hair Specialist</p>
+
+        </article>
+
+
+        <article class="team-card reveal">
+
+          <img
+            class="team-photo"
+            src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=800&q=85"
+            alt="Amelia"
+          >
+
+          <h3>Amelia</h3>
+          <p>Skin & Facial Expert</p>
+
+        </article>
+
+
+        <article class="team-card reveal">
+
+          <img
+            class="team-photo"
+            src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=85"
+            alt="Lina"
+          >
+
+          <h3>Lina</h3>
+          <p>Nail Artist</p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TESTIMONIAL 01 -->
+
+  <section class="quote-one">
+
+    <div class="quote-symbol">
+      “
+    </div>
+
+    <blockquote>
+      I walked in needing a little pick-me-up
+      and walked out feeling like myself again.
+    </blockquote>
+
+    <cite>
+      — A Maison Rosé Client
+    </cite>
+
+  </section>
+
+
+  <!-- CONTACT 01 -->
+
+  <section
+    class="section contact-one"
+    id="contact"
+  >
+
+    <div class="container contact-grid">
+
+      <div class="contact-card reveal">
+
+        <div class="eyebrow">
+          Come Say Hello
+        </div>
+
+        <h3>
+          Your next<br>
+          appointment.
+        </h3>
+
+
+        <div class="contact-item">
+
+          <div class="contact-icon">⌖</div>
+
+          <div>
+            <small>Location</small>
+
+            <p>
+              Jumeirah, Dubai<br>
+              United Arab Emirates
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="contact-item">
+
+          <div class="contact-icon">✉</div>
+
+          <div>
+            <small>Email</small>
+
+            <a href="mailto:hello@maisonrose.com">
+              hello@maisonrose.com
+            </a>
+          </div>
+
+        </div>
+
+
+        <div class="contact-item">
+
+          <div class="contact-icon">◌</div>
+
+          <div>
+            <small>WhatsApp</small>
+
+            <a
+              href="https://wa.me/971501234567"
+              target="_blank"
+            >
+              +971 50 123 4567
+            </a>
+          </div>
+
+        </div>
+
+
+        <a
+          href="https://wa.me/971501234567"
+          target="_blank"
+          class="btn btn-dark"
+        >
+          WhatsApp Us →
+        </a>
+
+      </div>
+
+
+      <div class="map reveal">
+
+        <div class="map-box">
+
+          <span>♡</span>
+
+          <h4>
+            Find us in Jumeirah
+          </h4>
+
+          <p>
+            A little beauty escape
+            in the heart of Dubai.
+          </p>
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Jumeirah+Dubai"
+            target="_blank"
+            class="btn btn-pink"
+          >
+            Open in Maps →
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA 01 -->
+
+  <section class="cta-one">
+
+    <div class="eyebrow">
+      Ready when you are
+    </div>
+
+    <h2>
+      You deserve<br>
+      a little <em>you.</em>
+    </h2>
+
+    <p>
+      Book your next beauty appointment and make time
+      for something that makes you feel wonderful.
+    </p>
+
+    <a
+      href="https://wa.me/971501234567"
+      target="_blank"
+      class="btn btn-dark"
+    >
+      Book Your Appointment →
+    </a>
+
+  </section>
+
+</div>
+
+
+<!-- =========================================================
+     CHAPTER TWO
+========================================================= -->
+
+<div class="chapter chapter-two" id="chapter-two">
+
+  <div class="chapter-number">02 / 03</div>
+
+
+  <!-- HERO 02 -->
+
+  <section class="hero-two">
+
+    <div class="container hero-two-grid">
+
+      <div class="hero-two-copy reveal">
+
+        <div class="eyebrow">
+          Chapter Two · The Ritual
+        </div>
+
+        <h2>
+          Your time.<br>
+          Your space.<br>
+          <em>Your glow.</em>
+        </h2>
+
+        <p class="subtitle">
+          Step away from the noise and into a slower,
+          softer kind of beauty experience.
+        </p>
+
+        <br>
+
+        <a
+          href="https://wa.me/971501234567"
+          target="_blank"
+          class="btn btn-pink"
+        >
+          Reserve Your Ritual →
+        </a>
+
+      </div>
+
+
+      <div class="hero-two-image-wrap reveal">
+
+        <img
+          class="hero-two-image"
+          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=85"
+          alt="Luxury beauty salon"
+        >
+
+        <img
+          class="hero-two-small-image"
+          src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=600&q=85"
+          alt="Beauty treatment"
+        >
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES 02 -->
+
+  <section class="section services-two">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        The Menu
+      </div>
+
+      <h2 class="section-title">
+        Beauty,<br>
+        <em>beautifully done.</em>
+      </h2>
+
+      <p class="subtitle">
+        A curated menu of treatments designed around
+        the way you want to feel when you leave.
+      </p>
+
+
+      <div class="services-list">
+
+        <div class="service-row reveal">
+
+          <div class="service-row-number">
+            01
+          </div>
+
+          <h3>
+            Signature Hair
+          </h3>
+
+          <p>
+            Cut · Style · Colour · Treatments
+          </p>
+
+          <div class="service-row-price">
+            From 180
+          </div>
+
+        </div>
+
+
+        <div class="service-row reveal">
+
+          <div class="service-row-number">
+            02
+          </div>
+
+          <h3>
+            Glow Facial
+          </h3>
+
+          <p>
+            Hydrate · Restore · Illuminate
+          </p>
+
+          <div class="service-row-price">
+            From 220
+          </div>
+
+        </div>
+
+
+        <div class="service-row reveal">
+
+          <div class="service-row-number">
+            03
+          </div>
+
+          <h3>
+            Nail Ritual
+          </h3>
+
+          <p>
+            Gel · Manicure · Extensions
+          </p>
+
+          <div class="service-row-price">
+            From 120
+          </div>
+
+        </div>
+
+
+        <div class="service-row reveal">
+
+          <div class="service-row-number">
+            04
+          </div>
+
+          <h3>
+            Lash Lift
+          </h3>
+
+          <p>
+            Lift · Tint · Define
+          </p>
+
+          <div class="service-row-price">
+            From 160
+          </div>
+
+        </div>
+
+
+        <div class="service-row reveal">
+
+          <div class="service-row-number">
+            05
+          </div>
+
+          <h3>
+            Brow Sculpt
+          </h3>
+
+          <p>
+            Shape · Tint · Finish
+          </p>
+
+          <div class="service-row-price">
+            From 90
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEATURE 02 -->
+
+  <section class="section feature-two">
+
+    <div class="container">
+
+      <div class="feature-banner reveal">
+
+        <img
+          src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1500&q=85"
+          alt="Luxury beauty treatment"
+        >
+
+        <div class="feature-overlay">
+
+          <div class="feature-overlay-content">
+
+            <div class="eyebrow">
+              The Maison Philosophy
+            </div>
+
+            <h2 class="section-title">
+              Beauty should<br>
+              feel like <em>you.</em>
+            </h2>
+
+            <p>
+              We don't believe in one-size-fits-all beauty.
+              Every appointment begins with listening,
+              understanding and creating something personal.
+            </p>
+
+            <a
+              href="https://wa.me/971501234567"
+              target="_blank"
+              class="btn btn-pink"
+            >
+              Start Your Experience →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TEAM 02 -->
+
+  <section class="section team-two">
+
+    <div class="container team-two-layout">
+
+      <div class="team-intro reveal">
+
+        <div class="eyebrow">
+          Your Beauty Team
+        </div>
+
+        <h2 class="section-title">
+          Experts<br>
+          with <em>heart.</em>
+        </h2>
+
+        <p class="subtitle">
+          Meet the people who turn your beauty ideas
+          into something even better.
+        </p>
+
+      </div>
+
+
+      <div class="team-stack">
+
+        <article class="team-stack-card reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=800&q=85"
+            alt="Sofia"
+          >
+
+          <h3>
+            Sofia
+          </h3>
+
+          <p>
+            Hair Specialist
+          </p>
+
+        </article>
+
+
+        <article class="team-stack-card reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=800&q=85"
+            alt="Amelia"
+          >
+
+          <h3>
+            Amelia
+          </h3>
+
+          <p>
+            Facial Expert
+          </p>
+
+        </article>
+
+
+        <article class="team-stack-card reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=85"
+            alt="Lina"
+          >
+
+          <h3>
+            Lina
+          </h3>
+
+          <p>
+            Nail Artist
+          </p>
+
+        </article>
+
+
+        <article class="team-stack-card reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=85"
+            alt="Maya"
+          >
+
+          <h3>
+            Maya
+          </h3>
+
+          <p>
+            Lash & Brow Artist
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TESTIMONIAL 02 -->
+
+  <section class="quote-two">
+
+    <div class="quote-two-inner">
+
+      <div class="quote-two-number">
+        02
+      </div>
+
+      <div>
+
+        <blockquote>
+          "The kind of place where
+          you forget to check your
+          phone because you're
+          finally enjoying your time."
+        </blockquote>
+
+        <cite>
+          — Layla, Maison Rosé Client
+        </cite>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT 02 -->
+
+  <section class="section contact-two">
+
+    <div class="container contact-two-grid">
+
+      <div class="contact-photo reveal">
+
+        <div class="contact-photo-box">
+
+          <h3>
+            Come spend
+            some time
+            with us.
+          </h3>
+
+          <p>
+            Find Maison Rosé in Jumeirah,
+            Dubai — your little escape
+            from the everyday.
+          </p>
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Jumeirah+Dubai"
+            target="_blank"
+            class="btn btn-pink"
+          >
+            Get Directions →
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hours reveal">
+
+        <div class="eyebrow">
+          Opening Hours
+        </div>
+
+        <h3>
+          We're here<br>
+          for you.
+        </h3>
+
+        <div class="hours-row">
+          Monday
+          <span>9:00 — 20:00</span>
+        </div>
+
+        <div class="hours-row">
+          Tuesday
+          <span>9:00 — 20:00</span>
+        </div>
+
+        <div class="hours-row">
+          Wednesday
+          <span>9:00 — 20:00</span>
+        </div>
+
+        <div class="hours-row">
+          Thursday
+          <span>9:00 — 21:00</span>
+        </div>
+
+        <div class="hours-row">
+          Friday
+          <span>10:00 — 21:00</span>
+        </div>
+
+        <div class="hours-row">
+          Saturday
+          <span>10:00 — 21:00</span>
+        </div>
+
+        <div class="hours-row">
+          Sunday
+          <span>10:00 — 18:00</span>
+        </div>
+
+        <br>
+
+        <a
+          href="https://wa.me/971501234567"
+          target="_blank"
+          class="btn btn-dark"
+        >
+          Book Appointment →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA 02 -->
+
+  <section class="cta-two">
+
+    <div class="eyebrow">
+      Make time for yourself
+    </div>
+
+    <h2>
+      Your next<br>
+      <em>glow</em> awaits.
+    </h2>
+
+    <p>
+      A beautiful hour, a fresh feeling,
+      and a little more you.
+    </p>
+
+    <a
+      href="https://wa.me/971501234567"
+      target="_blank"
+      class="btn btn-pink"
+    >
+      Book Your Ritual →
+    </a>
+
+  </section>
+
+</div>
+
+
+<!-- =========================================================
+     CHAPTER THREE
+========================================================= -->
+
+<div class="chapter chapter-three" id="chapter-three">
+
+  <div class="chapter-number">03 / 03</div>
+
+
+  <!-- HERO 03 -->
+
+  <section class="hero-three">
+
+    <div class="container">
+
+      <div class="hero-three-heading reveal">
+
+        <div class="eyebrow">
+          Maison Rosé
+        </div>
+
+        <h2>
+          Beautiful<br>
+          <em>inside & out.</em>
+        </h2>
+
+      </div>
+
+
+      <div class="hero-three-images">
+
+        <img
+          class="reveal"
+          src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=700&q=85"
+          alt="Beauty salon"
+        >
+
+        <img
+          class="reveal"
+          src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=85"
+          alt="Salon interior"
+        >
+
+        <img
+          class="reveal"
+          src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=700&q=85"
+          alt="Beauty treatment"
+        >
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES 03 -->
+
+  <section class="services-three">
+
+    <div class="container services-three-grid">
+
+      <div class="services-three-intro reveal">
+
+        <div class="eyebrow">
+          Everything You Need
+        </div>
+
+        <h2 class="section-title">
+          A little<br>
+          <em>luxury.</em>
+        </h2>
+
+        <p class="subtitle">
+          From a quick refresh to a full beauty day,
+          choose exactly what you need.
+        </p>
+
+        <br>
+
+        <a
+          href="https://wa.me/971501234567"
+          target="_blank"
+          class="btn btn-dark"
+        >
+          Ask Our Team →
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <article class="editorial-service reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=85"
+            alt="Hair styling"
+          >
+
+          <div>
+
+            <h3>
+              Hair & Styling
+            </h3>
+
+            <p>
+              From polished blow-dries to complete
+              transformations, we'll create the look
+              you actually want to wear.
+            </p>
+
+            <a href="#contact">
+              Explore Hair →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <article class="editorial-service reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=500&q=85"
+            alt="Facial"
+          >
+
+          <div>
+
+            <h3>
+              Skin & Facials
+            </h3>
+
+            <p>
+              Deep hydration, brightening and
+              restorative treatments for fresh,
+              healthy-looking skin.
+            </p>
+
+            <a href="#contact">
+              Explore Facials →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <article class="editorial-service reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=500&q=85"
+            alt="Nails"
+          >
+
+          <div>
+
+            <h3>
+              Nails
+            </h3>
+
+            <p>
+              Clean, classic, playful or completely
+              extra — your nails, your rules.
+            </p>
+
+            <a href="#contact">
+              Explore Nails →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <article class="editorial-service reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1583001931096-959e9a1a6223?auto=format&fit=crop&w=500&q=85"
+            alt="Lashes"
+          >
+
+          <div>
+
+            <h3>
+              Lashes & Brows
+            </h3>
+
+            <p>
+              Subtle definition or full glamour,
+              designed to frame your natural beauty.
+            </p>
+
+            <a href="#contact">
+              Explore Beauty →
+            </a>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEATURE 03 -->
+
+  <section class="feature-three">
+
+    <div class="container feature-three-grid">
+
+      <div class="feature-three-image reveal">
+
+        <img
+          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1000&q=85"
+          alt="Luxury beauty experience"
+        >
+
+      </div>
+
+
+      <div class="feature-three-copy reveal">
+
+        <div class="eyebrow">
+          The Maison Difference
+        </div>
+
+        <h2 class="section-title">
+          Come as<br>
+          you are.
+        </h2>
+
+        <p>
+          You don't need to know exactly what you want.
+          You don't need to have your next look planned.
+          Just tell us how you want to feel, and we'll
+          help you get there.
+        </p>
+
+        <a
+          href="https://wa.me/971501234567"
+          target="_blank"
+          class="btn btn-pink"
+        >
+          Talk To Us →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TEAM 03 -->
+
+  <section class="section team-three">
+
+    <div class="container">
+
+      <div class="team-three-header reveal">
+
+        <div>
+
+          <div class="eyebrow">
+            The Maison Girls
+          </div>
+
+          <h2 class="section-title">
+            People who<br>
+            <em>get beauty.</em>
+          </h2>
+
+        </div>
+
+        <p class="subtitle">
+          Specialists in their craft.
+          Perfectionists when it comes to your appointment.
+        </p>
+
+      </div>
+
+
+      <div class="team-three-grid">
+
+        <div class="team-large reveal">
+
+          <img
+            src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1000&q=85"
+            alt="Sofia"
+          >
+
+          <h3>
+            Sofia
+          </h3>
+
+          <p>
+            Creative Hair Director
+          </p>
+
+        </div>
+
+
+        <div class="team-small-column">
+
+          <div class="team-small reveal">
+
+            <img
+              src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=500&q=85"
+              alt="Amelia"
+            >
+
+            <div>
+
+              <h3>
+                Amelia
+              </h3>
+
+              <p>
+                Skin Specialist
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="team-small reveal">
+
+            <img
+              src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=500&q=85"
+              alt="Lina"
+            >
+
+            <div>
+
+              <h3>
+                Lina
+              </h3>
+
+              <p>
+                Nail Artist
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="team-small reveal">
+
+            <img
+              src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=500&q=85"
+              alt="Maya"
+            >
+
+            <div>
+
+              <h3>
+                Maya
+              </h3>
+
+              <p>
+                Lash Specialist
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TESTIMONIAL 03 -->
+
+  <section class="quote-three">
+
+    <div class="container">
+
+      <div class="quote-three-heading reveal">
+
+        <div class="eyebrow">
+          Kind Words
+        </div>
+
+        <h2 class="section-title">
+          Loved by<br>
+          <em>our clients.</em>
+        </h2>
+
+      </div>
+
+
+      <div class="reviews">
+
+        <article class="review reveal">
+
+          <div class="review-stars">
+            ★★★★★
+          </div>
+
+          <p>
+            "My new favourite place
+            in Dubai. Everything feels
+            so thoughtful."
+          </p>
+
+          <small>
+            — Sara
+          </small>
+
+        </article>
+
+
+        <article class="review reveal">
+
+          <div class="review-stars">
+            ★★★★★
+          </div>
+
+          <p>
+            "The best facial I've had.
+            My skin was glowing for days."
+          </p>
+
+          <small>
+            — Noor
+          </small>
+
+        </article>
+
+
+        <article class="review reveal">
+
+          <div class="review-stars">
+            ★★★★★
+          </div>
+
+          <p>
+            "Beautiful salon, amazing
+            team and genuinely lovely
+            experience."
+          </p>
+
+          <small>
+            — Olivia
+          </small>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT 03 -->
+
+  <section
+    class="contact-three"
+    id="contact-three"
+  >
+
+    <div class="container contact-three-grid">
+
+      <div class="reveal">
+
+        <div class="eyebrow">
+          Let's Make It Happen
+        </div>
+
+        <h2 class="section-title">
+          Your beauty<br>
+          day starts<br>
+          <em>here.</em>
+        </h2>
+
+        <p class="subtitle">
+          Message us on WhatsApp and we'll help
+          you find the perfect treatment and time.
+        </p>
+
+
+        <div class="contact-big-info">
+
+          <div>
+
+            <small>
+              Location
+            </small>
+
+            <p>
+              Jumeirah, Dubai
+            </p>
+
+          </div>
+
+
+          <div>
+
+            <small>
+              WhatsApp
+            </small>
+
+            <a
+              href="https://wa.me/971501234567"
+              target="_blank"
+            >
+              +971 50 123 4567
+            </a>
+
+          </div>
+
+
+          <div>
+
+            <small>
+              Email
+            </small>
+
+            <a href="mailto:hello@maisonrose.com">
+              hello@maisonrose.com
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="contact-form reveal">
+
+        <h3>
+          Let's get you booked.
+        </h3>
+
+        <div class="fake-input">
+          Your name
+        </div>
+
+        <div class="fake-input">
+          Preferred treatment
+        </div>
+
+        <div class="fake-input">
+          Preferred date
+        </div>
+
+        <div class="fake-input">
+          Preferred time
+        </div>
+
+        <br>
+
+        <a
+          href="https://wa.me/971501234567"
+          target="_blank"
+          class="btn btn-dark"
+        >
+          Continue on WhatsApp →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA 03 -->
+
+  <section class="cta-three">
+
+    <div class="eyebrow">
+      Maison Rosé · Dubai
+    </div>
+
+    <h2>
+      Make time<br>
+      for <em>you.</em>
+    </h2>
+
+    <p>
+      Because feeling beautiful isn't an occasion.
+      It's something you deserve every day.
+    </p>
+
+    <a
+      href="https://wa.me/971501234567"
+      target="_blank"
+      class="btn btn-dark"
+    >
+      Book Your Appointment →
+    </a>
+
+  </section>
+
+</div>
+
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-main">
+
+      <div class="footer-logo">
+        Maison <span>Rosé</span>
+      </div>
+
+      <div class="footer-links">
+
+        <a href="#home">
+          Home
+        </a>
+
+        <a href="#chapter-one">
+          Treatments
+        </a>
+
+        <a href="#chapter-two">
+          Experience
+        </a>
+
+        <a href="#chapter-three">
+          Team
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+      © <span id="year"></span>
+      Maison Rosé Beauty Salon.
+      All rights reserved.
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+  /* =========================================================
+     NAVBAR
+  ========================================================= */
+
+  const header =
+    document.getElementById("header");
+
+  window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 30) {
+
+      header.classList.add("scrolled");
+
+    } else {
+
+      header.classList.remove("scrolled");
+
+    }
+
+  });
+
+
+  /* =========================================================
+     MOBILE MENU
+  ========================================================= */
+
+  const menuBtn =
+    document.getElementById("menuBtn");
+
+  const navLinks =
+    document.getElementById("navLinks");
+
+
+  menuBtn.addEventListener("click", () => {
+
+    navLinks.classList.toggle("mobile-open");
+
+    if (
+      navLinks.classList.contains("mobile-open")
+    ) {
+
+      menuBtn.textContent = "×";
+
+    } else {
+
+      menuBtn.textContent = "☰";
+
+    }
+
+  });
+
+
+  document
+    .querySelectorAll(".nav-links a")
+    .forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.classList.remove("mobile-open");
+
+        menuBtn.textContent = "☰";
+
+      });
+
+    });
+
+
+  /* =========================================================
+     SCROLL REVEAL
+  ========================================================= */
+
+  const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+  const observer =
+    new IntersectionObserver(
+
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: .12
+      }
+
+    );
+
+
+  revealElements.forEach(element => {
+
+    observer.observe(element);
+
+  });
+
+
+  /* =========================================================
+     YEAR
+  ========================================================= */
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+  /* =========================================================
+     SMOOTH ANCHORS
+  ========================================================= */
+
+  document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(anchor => {
+
+      anchor.addEventListener("click", function(e) {
+
+        const target =
+          document.querySelector(
+            this.getAttribute("href")
+          );
+
+        if (!target) return;
+
+        e.preventDefault();
+
+        const headerHeight =
+          header.offsetHeight;
+
+        const position =
+          target.getBoundingClientRect().top +
+          window.pageYOffset -
+          headerHeight -
+          15;
+
+        window.scrollTo({
+
+          top: position,
+
+          behavior: "smooth"
+
+        });
+
+      });
+
+    });
+
+</script>
+
+
+</body>
+</html>
