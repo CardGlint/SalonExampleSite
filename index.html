@@ -1,9 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>My Websites</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #f5f4f1;
+            color: #1c1c1c;
+
+            font-family: -apple-system, BlinkMacSystemFont,
+                         "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 520px;
+        }
+
+        header {
+            margin-bottom: 32px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 42px;
+            font-weight: 400;
+            letter-spacing: -1.5px;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: #88837b;
+            font-size: 15px;
+        }
+
+        .websites {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 19px 20px;
+
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid #e5e2dc;
+            border-radius: 12px;
+
+            color: #1c1c1c;
+            text-decoration: none;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            background: #ffffff;
+            border-color: #d3cfc7;
+        }
+
+        .name {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .arrow {
+            color: #99938a;
+            font-size: 18px;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover .arrow {
+            transform: translateX(4px);
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .container {
+                width: 88%;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <script>
@@ -19,10 +125,33 @@
         window.location.replace(websites[page]);
     } else {
         document.body.innerHTML = `
-            <h1>My Websites</h1>
-            <p><a href="site1.html">Website 1</a></p>
-            <p><a href="site2.html">Website 2</a></p>
-            <p><a href="site3.html">Website 3</a></p>
+            <main class="container">
+
+                <header>
+                    <h1>My Websites</h1>
+                    <p class="subtitle">A collection of my projects.</p>
+                </header>
+
+                <div class="websites">
+
+                    <a class="card" href="site1.html">
+                        <span class="name">Website 01</span>
+                        <span class="arrow">→</span>
+                    </a>
+
+                    <a class="card" href="site2.html">
+                        <span class="name">Website 02</span>
+                        <span class="arrow">→</span>
+                    </a>
+
+                    <a class="card" href="site3.html">
+                        <span class="name">Website 03</span>
+                        <span class="arrow">→</span>
+                    </a>
+
+                </div>
+
+            </main>
         `;
     }
 </script>
