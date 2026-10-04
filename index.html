@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Websites</title>
+</head>
+<body>
+
+<script>
+    const page = window.location.pathname.replace(/^\/|\/$/g, "");
+
+    const websites = {
+        "1": "site1.html",
+        "2": "site2.html",
+        "3": "site3.html"
+    };
+
+    if (websites[page]) {
+        window.location.replace(websites[page]);
+    } else {
+        document.body.innerHTML = `
+            <h1>My Websites</h1>
+            <p><a href="site1.html">Website 1</a></p>
+            <p><a href="site2.html">Website 2</a></p>
+            <p><a href="site3.html">Website 3</a></p>
+        `;
+    }
+</script>
+
+</body>
+</html>
